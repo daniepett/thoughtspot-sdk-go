@@ -16,6 +16,7 @@ func (c *Client) CreateConnection(r models.CreateConnectionRequest) (*models.Cre
 		return nil, err
 	}
 
+	fmt.Print("This is the request", string(rb))
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/connection/create", c.HostURL), strings.NewReader(string(rb)))
 	if err != nil {
 		return nil, err

@@ -21,6 +21,7 @@ func (c *Client) ImportMetadataTML(r models.ImportMetadataTMLRequest) ([]models.
 		return nil, err
 	}
 
+	fmt.Print("This is the request", string(rb))
 	body, _, err := c.doRequest(req)
 	if err != nil {
 		return nil, err
@@ -29,10 +30,11 @@ func (c *Client) ImportMetadataTML(r models.ImportMetadataTMLRequest) ([]models.
 	var m []models.ImportMetadataTMLResponse
 	err = json.Unmarshal(body, &m)
 
+	fmt.Print("This is the response2", string(body))
+
 	if err != nil {
 		return nil, err
 	}
-
 	return m, nil
 }
 
