@@ -23,9 +23,9 @@ type SearchRoleResponse struct {
 	// Unique identifier of modifier of the role.
 	ModifierId string `json:"modifier_id,omitempty"`
 	// Creation time of the role in milliseconds.
-	CreationTimeInMillis map[string]interface{} `json:"creation_time_in_millis,omitempty"`
+	CreationTimeInMillis int64 `json:"creation_time_in_millis,omitempty"`
 	// Last modified time of the role in milliseconds.
-	ModificationTimeInMillis map[string]interface{} `json:"modification_time_in_millis,omitempty"`
+	ModificationTimeInMillis int64 `json:"modification_time_in_millis,omitempty"`
 	// Indicates whether the role is deleted.
 	Deleted bool `json:"deleted,omitempty"`
 	// Indicates whether the role is deprecated.
