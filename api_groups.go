@@ -69,8 +69,6 @@ func (c *Client) UpdateUserGroup(id string, r models.UpdateUserGroupRequest) err
 		return err
 	}
 
-	fmt.Println("This is the user group req", string(rb))
-
 	req, err := http.NewRequest("POST", fmt.Sprintf("%s/groups/%s/update", c.HostURL, id), strings.NewReader(string(rb)))
 	if err != nil {
 		return err

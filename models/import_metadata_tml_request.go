@@ -5,7 +5,7 @@ type ImportMetadataTMLRequest struct {
 	// Details of TML objects.  **Note: importing TML in YAML format, when coming directly from our Playground, is currently requires manual formatting. For more details on the workaround, please click [here](https://developers.thoughtspot.com/docs/known-issues#_version_9_12_0_cl)**
 	MetadataTmls []string `json:"metadata_tmls"`
 	// Specifies the import policy for the TML import.
-	ImportPolicy *string `json:"import_policy,omitempty"`
+	ImportPolicy string `json:"import_policy,omitempty"`
 	// If selected, creates TML objects with new GUIDs.
 	CreateNew bool `json:"create_new,omitempty"`
 	// If import is happening from all orgs context.
