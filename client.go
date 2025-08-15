@@ -23,7 +23,7 @@ type Client struct {
 func NewClient(host, username, password, orgId *string) (*Client, error) {
 	print(host)
 	c := Client{
-		HTTPClient: &http.Client{Timeout: 60 * time.Second},
+		HTTPClient: &http.Client{Timeout: 120 * time.Second},
 		HostURL:    fmt.Sprintf("https://%s.thoughtspot.cloud/api/rest/2.0", *host),
 	}
 
