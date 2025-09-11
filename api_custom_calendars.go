@@ -35,7 +35,7 @@ func (c *Client) CreateCalendar(r models.CreateCustomCalendarRequest) (*models.C
 	return &res, nil
 }
 
-func (c *Client) SearchCalendars(r models.SearchConnectionRequest) ([]models.CalendarResponse, error) {
+func (c *Client) SearchCalendars(r models.SearchCustomCalendarsRequest) ([]models.CalendarResponse, error) {
 	rb, err := json.Marshal(r)
 
 	if err != nil {
@@ -64,7 +64,7 @@ func (c *Client) SearchCalendars(r models.SearchConnectionRequest) ([]models.Cal
 	return conn, nil
 }
 
-func (c *Client) UpdateCalendar(id string, r models.UpdateConnectionRequest) error {
+func (c *Client) UpdateCalendar(id string, r models.UpdateCustomCalendarRequest) error {
 	rb, err := json.Marshal(r)
 
 	if err != nil {
