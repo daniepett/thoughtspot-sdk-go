@@ -48,9 +48,13 @@ func (c *Client) ExportMetadataTML(r models.ExportMetadataTMLRequest) ([]models.
 		return nil, err
 	}
 
-	body, _, err := c.doRequest(req)
-	if err != nil {
+	body, res, err := c.doRequest(req)
+	if err != nil && res.StatusCode != 400 {
 		return nil, err
+	}
+
+	if res.StatusCode == 400 {
+		return nil, nil
 	}
 
 	var m []models.ExportMetadataTMLResponse

@@ -37,6 +37,10 @@ func (c *Client) GetToken() (*models.GetTokenResponse, error) {
 		return nil, err
 	}
 
+	// if http.DetectContentType(body) == "text/html; charset=utf-8" {
+	// 	return nil, fmt.Errorf("The cluster appears to be in maintenance or startup mode")
+	// }
+
 	ar := models.GetTokenResponse{}
 	err = json.Unmarshal(body, &ar)
 	if err != nil {
