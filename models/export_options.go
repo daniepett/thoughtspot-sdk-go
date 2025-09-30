@@ -7,5 +7,8 @@ type ExportOptions struct {
 	// Boolean flag to whether to export guid of the object. This will only be respected when UserDefinedId in TML is enabled.
 	IncludeGuid bool `json:"include_guid"`
 	// Boolean flag to whether to export user_defined_id of the object. This will only be respected when UserDefinedId in TML is enabled.
-	IncludeObjectId bool `json:"include_object_id,omitempty"`
+	IncludeObjId                  bool `json:"include_obj_id,omitempty"`
+	IncludeObjIdRef               bool `json:"include_obj_id_ref,omitempty"`
+	ExportWithAssociatedFeedbacks bool `json:"export_with_associated_feedbacks,omitempty"`
+	ExportColumnSecurityRules     bool `json:"export_column_security_rules,omitempty"`
 }

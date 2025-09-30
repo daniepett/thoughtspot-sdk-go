@@ -1,15 +1,32 @@
 package models
 
-// ImportMetadataTMLRequest struct for ImportMetadataTMLRequest
 type ImportMetadataTMLResponse struct {
-	// Details of TML objects.  **Note: importing TML in YAML format, when coming directly from our Playground, is currently requires manual formatting. For more details on the workaround, please click [here](https://developers.thoughtspot.com/docs/known-issues#_version_9_12_0_cl)**
-	Response ImportMetadataTMLResponseResponse `json:"response"`
+	Response     ImportMetadataTMLResponseResponse `json:"response"`
+	RequestIndex int32                             `json:"request_index"`
 }
 
 type ImportMetadataTMLResponseResponse struct {
-	// Details of TML objects.  **Note: importing TML in YAML format, when coming directly from our Playground, is currently requires manual formatting. For more details on the workaround, please click [here](https://developers.thoughtspot.com/docs/known-issues#_version_9_12_0_cl)**
-	Header map[string]interface{}          `json:"header"`
-	Status ImportMetadataTMLResponseStatus `json:"status"`
+	Header ImportMetadataTMLResponseResponseHeader `json:"header"`
+	Status ImportMetadataTMLResponseStatus         `json:"status"`
+	Action string                                  `json:"action"`
+}
+
+type ImportMetadataTMLResponseResponseHeader struct {
+	AuthorName          string `json:"author_name,omitempty"`
+	SchemaStripe        string `json:"schema_stripe,omitempty"`
+	AuthorGuid          string `json:"author_guid,omitempty"`
+	Created             int64  `json:"created,omitempty"`
+	MetadataType        string `json:"metadata_type,omitempty"`
+	OwnerGuid           string `json:"owner_guid,omitempty"`
+	Type                string `json:"type,omitempty"`
+	IdGuid              string `json:"id_guid,omitempty"`
+	IsVersioningEnabled bool   `json:"is_versioning_enabled,omitempty"`
+	DatabaseStripe      string `json:"database_stripe,omitempty"`
+	Name                string `json:"name,omitempty"`
+	ModifiedBy          string `json:"modified_by,omitempty"`
+	ObjId               string `json:"objId,omitempty"`
+	Modified            int64  `json:"modified,omitempty"`
+	AuthorDisplayName   string `json:"author_display_name,omitempty"`
 }
 
 type ImportMetadataTMLResponseStatus struct {
