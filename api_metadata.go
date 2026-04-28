@@ -3,6 +3,7 @@ package thoughtspot
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strings"
 
@@ -53,6 +54,8 @@ func (c *Client) ExportMetadataTML(r models.ExportMetadataTMLRequest) ([]models.
 		return nil, err
 	}
 
+	log.Printf("Response Body: %s", string(body))
+
 	if res.StatusCode == 400 {
 		return nil, nil
 	}
@@ -84,4 +87,34 @@ func (c *Client) DeleteMetadata(r models.DeleteMetadataRequest) error {
 	}
 
 	return nil
+}
+
+func (c *Client) SearchMetadata(r models.MetadataSearchRequest) ([]models.MetadataSearchResponse, error) {
+	rb, err := json.Marshal(r)
+
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", fmt.Sprintf("%s/metadata/search", c.HostURL), strings.NewReader(string(rb)))
+	if err != nil {
+		return nil, err
+	}
+
+	body, res, err := c.doRequest(req)
+	if err != nil && res.StatusCode != 400 {
+		return nil, err
+	}
+
+	if res.StatusCode == 400 {
+		return nil, nil
+	}
+
+	var m []models.MetadataSearchResponse
+	err = json.Unmarshal(body, &m)
+	if err != nil {
+		return nil, err
+	}
+
+	return m, nil
 }
